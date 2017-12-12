@@ -12,10 +12,20 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var rootNavigationViewController:KNavigationController?
+    var mainViewController:MainViewController?
+    
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        self.rootNavigationViewController? = self.window?.rootViewController as! KNavigationController
+        self.mainViewController? = self.rootNavigationViewController?.viewControllers.first as! MainViewController
+        self.window?.makeKeyAndVisible()
+        
+        
         return true
     }
 
