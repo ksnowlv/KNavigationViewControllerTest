@@ -10,7 +10,7 @@ import UIKit
 
 class KNavigationController: UINavigationController,UINavigationControllerDelegate,UIGestureRecognizerDelegate  {
     
-    static var _navigationTransitionAnimationDisable:Bool = false
+    static var navigationTransitionAnimationDisable:Bool = false
 
     var isStatusBarHidden = false
     
@@ -33,12 +33,12 @@ class KNavigationController: UINavigationController,UINavigationControllerDelega
     
     //animation
     class func setNavigationTransitionAnimationDisable(isAnimationDisable:Bool){
-        _navigationTransitionAnimationDisable = isAnimationDisable
+        KNavigationController.navigationTransitionAnimationDisable = isAnimationDisable
     }
     
     //status bar
     override var prefersStatusBarHidden: Bool {
-        return isStatusBarHidden
+        return self.isStatusBarHidden
     }
     
     override var childViewControllerForStatusBarHidden: UIViewController? {
@@ -54,20 +54,20 @@ class KNavigationController: UINavigationController,UINavigationControllerDelega
             viewController.hidesBottomBarWhenPushed = true
         }
         
-        super.pushViewController(viewController, animated: KNavigationController._navigationTransitionAnimationDisable ? false :animated)
+        super.pushViewController(viewController, animated: KNavigationController.navigationTransitionAnimationDisable ? false :animated)
     }
     
     
     override func popViewController(animated: Bool) -> UIViewController? {
-        return super.popViewController(animated: KNavigationController._navigationTransitionAnimationDisable ? false: animated)
+        return super.popViewController(animated: KNavigationController.navigationTransitionAnimationDisable ? false: animated)
     }
     
     override func popToRootViewController(animated: Bool) -> [UIViewController]? {
-        return super.popToRootViewController(animated: KNavigationController._navigationTransitionAnimationDisable ? false: animated)
+        return super.popToRootViewController(animated: KNavigationController.navigationTransitionAnimationDisable ? false: animated)
     }
     
     override func popToViewController(_ viewController: UIViewController, animated: Bool) -> [UIViewController]? {
-        return super.popToViewController(viewController, animated: KNavigationController._navigationTransitionAnimationDisable ? false: animated)
+        return super.popToViewController(viewController, animated: KNavigationController.navigationTransitionAnimationDisable ? false: animated)
     }
     
     //UIScreenEdgePanGestureRecognizer&tableview
